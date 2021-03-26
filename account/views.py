@@ -18,14 +18,14 @@ def api_register_account_view(request):
             data = {}
             data['email'] = account.email 
             data['username'] = account.username
-            data['response'] = 
+            data['response'] = "Successly created user"
             data['token'] = Token.objects.get(user=account).key
             return Response(data=data,status=status.HTTP_201_CREATED)
         else:
             data = serializer.errors
             return Response(data=data,status=status.HTTP_400_BAD_REQUEST)
 
-@api_view
+@api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def api_detail_account_view(request):
 
