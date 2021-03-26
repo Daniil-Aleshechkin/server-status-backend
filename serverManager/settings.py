@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #3rd party
     'rest_framework',
+    'django_celery_results',
     'rest_framework.authtoken',
 
     #Own
@@ -137,3 +138,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CELERY_RESULT_BACKEND = 'django-db'
