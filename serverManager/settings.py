@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #Own
     'account',
+    'serverActivety',
 ]
 
 REST_FRAMEWORK = {
