@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #3rd party
     'rest_framework',
     'django_celery_results',
+    'django_celery_beat',
     'rest_framework.authtoken',
 
     #Own
@@ -140,3 +141,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CELERY_RESULT_BACKEND = 'django-db'
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
