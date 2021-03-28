@@ -20,13 +20,20 @@ def celeryTest(request):
 @permission_classes([AllowAny])
 def api_activety_detail_view(request):
     ec2 = boto3.resource('ec2')
-    instance = ec2.Instance('i-00a959f48aaf55c53')
+    instance = ec2.Instance('i-0ce85af9e90203702')
     
-    server = MinecraftServer.lookup('mc.hypixel.net')
+    try:
+        server = MinecraftServer.lookup(instance.public_ip_address)
+        response = server.status().players.online
+    except TypeError:
+        response = None
+    except ConnectionRefusedError:
+        response = None
 
     activety = Time.objects.get(date=datetime.now().date())
     data = {}
-    date['status'] = instance.status
+    data['status'] = instance.state["Name"]
     data['ip'] = instance.public_ip_address
     data['time up'] = activety.uptime
-    data['player count']
+    data['player count'] = response
+    return Response(data=data)

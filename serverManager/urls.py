@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from serverActivety.views import celeryTest
+from serverActivety.views import celeryTest,api_activety_detail_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
     #REST FRAMEWORK URLS
     path('account/',include('account.urls','account_api')),
-    path('celery/',celeryTest,name="celery")
+    path('activety/',api_activety_detail_view,name="activety")
 ]
