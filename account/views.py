@@ -34,4 +34,5 @@ def api_detail_account_view(request):
         data = {}
         data['username'] = account.username
         data['email'] = account.email
+        data['is_staff'] = account.is_staff
         return Response(data=data)

@@ -17,7 +17,7 @@ class AccountSerializer(serializers.ModelSerializer):
         confirmPassword = self.validated_data['confirmPassword']
 
         if password != confirmPassword:
-            raise serializers.ValidationError({'password':'Passwords do not match'})
+            raise serializers.ValidationError({'password':['Passwords do not match']})
         
         account.set_password(password)
         account.save()
